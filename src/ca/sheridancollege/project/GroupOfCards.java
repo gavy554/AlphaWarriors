@@ -1,28 +1,17 @@
-/**
- * SYST 17796 Project Base code.
- * Students can modify and extend to implement their game.
- * Add your name as an author and the date!
- */
 package ca.sheridancollege.project;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
-/**
- * A concrete class that represents any grouping of cards for a Game. HINT, you might want to subclass this more than
- * once. The group of cards has a maximum size attribute which is flexible for reuse.
- *
- * @author Group9
- * @author Parv, Daksh, Sudin, Jaiman
- */
 public class GroupOfCards {
 
-    //The group of cards, stored in an ArrayList
-    private ArrayList<Card> cards;
-    private int size;//the size of the grouping
+    // The group of cards, stored in an ArrayList
+    protected ArrayList<Card> cards;
+    private int size;// the size of the grouping
 
     public GroupOfCards(int size) {
         this.size = size;
+        this.cards = new ArrayList<>();
     }
 
     /**
@@ -52,4 +41,23 @@ public class GroupOfCards {
         this.size = size;
     }
 
-}//end class
+    public void addCard(Card card) {
+        if (cards.size() < size) {
+            cards.add(card);
+        } else {
+            System.out.println("Cannot add more cards. The group is full.");
+        }
+    }
+
+    public void removeCard(Card card) {
+        cards.remove(card);
+    }
+
+    public Card dealCard() {
+        if (!cards.isEmpty()) {
+            return cards.remove(0);
+        } else {
+            return null; // Handle deck being empty
+        }
+    }
+}
