@@ -11,13 +11,13 @@ import java.util.ArrayList;
  * The class that models your game. You should create a more specific child of this class and instantiate the methods
  * given.
  *
- * @author Group9
- * @author Parv, Daksh, Sudin, Jaiman
+ * @author Alpha Warriors
+ * @author Mayhansh, Rajat, Gurmanjot, Ashmeet
  */
 public abstract class Game {
 
-    private final String name;//the title of the game
-    private ArrayList<Player> players;// the players of the game
+    private final String name;
+    private ArrayList<Player> players;
 
     public Game(String name) {
         this.name = name;
@@ -45,14 +45,12 @@ public abstract class Game {
         this.players = players;
     }
 
-    /**
-     * Play the game. This might be one method or many method calls depending on your game.
-     */
     public abstract void play();
 
     /**
-     * When the game is over, use this method to declare and display a winning player.
+     *
+     * @return
      */
-    public abstract void declareWinner();
+    public abstract String declareWinner();
 
-}//end class
+}

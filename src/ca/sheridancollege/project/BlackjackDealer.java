@@ -1,5 +1,12 @@
 package ca.sheridancollege.project;
 
+/**
+ *
+ * @author Alpha Warriors
+ * @author Mayhansh, Rajat, Gurmanjot, Ashmeet
+ */
+
+ 
 public class BlackjackDealer extends Player {
 
     private GroupOfCards hand;
@@ -11,26 +18,26 @@ public class BlackjackDealer extends Player {
 
     @Override
     public void play() {
-        // Dealer's logic can be implemented here if needed
+        
     }
 
     public void addCard(Card card) {
         hand.addCard(card);
     }
 
-    public int getHandValue() {
-        int value = 0;
+    public int getHandAmount() {
+        int amount = 0;
         int aceCount = 0;
         for (Card card : hand.getCards()) {
             if (card.getRank() == Card.Rank.ACE) {
                 aceCount++;
             }
-            value += Math.min(10, card.getRank().ordinal() + 1);
+            amount += Math.min(10, card.getRank().ordinal() + 1);
         }
-        while (value > 21 && aceCount > 0) {
-            value -= 10;
+        while (amount > 21 && aceCount > 0) {
+            amount -= 10;
             aceCount--;
         }
-        return value;
+        return amount;
     }
 }

@@ -3,11 +3,17 @@ package ca.sheridancollege.project;
 import java.util.ArrayList;
 import java.util.Collections;
 
+/**
+ *
+ * @author Alpha Warriors
+ * @author Mayhansh, Rajat, Gurmanjot, Ashmeet
+ */
+
 public class GroupOfCards {
 
-    // The group of cards, stored in an ArrayList
+
     protected ArrayList<Card> cards;
-    private int size;// the size of the grouping
+    private int size;
 
     public GroupOfCards(int size) {
         this.size = size;
@@ -57,7 +63,7 @@ public class GroupOfCards {
         if (!cards.isEmpty()) {
             return cards.remove(0);
         } else {
-            return null; // Handle deck being empty
+            return null;
         }
     }
 }

@@ -1,6 +1,11 @@
 package ca.sheridancollege.project;
 
 import java.util.Scanner;
+/**
+ *
+ * @author Alpha Warriors
+ * @author Mayhansh, Rajat, Gurmanjot, Ashmeet
+ */
 
 public class BlackjackGame extends Game {
 
@@ -26,21 +31,19 @@ public class BlackjackGame extends Game {
     }
 
     @Override
-    public void play() {
-        // Deal initial cards
+    public void play() 
+    {
         dealInitialCards();
 
-        // Player's turn
         playerTurn();
 
-        // Dealer's turn
         dealerTurn();
 
-        // Declare winner
-        declareWinner();
+        String res = declareWinner();
+        System.out.println(res);
     }
 
-    private void dealInitialCards() {
+    public void dealInitialCards() {
         player.addCard(deck.dealCard());
         dealer.addCard(deck.dealCard());
         player.addCard(deck.dealCard());
@@ -50,7 +53,7 @@ public class BlackjackGame extends Game {
     private void playerTurn() {
         Scanner scanner = new Scanner(System.in);
         while (true) {
-            System.out.println("Your hand: " + player.getHandValue());
+            System.out.println("Your hand: " + player.getHandAmount());
             System.out.println("Do you want to hit or stand? (h/s)");
             String choice = scanner.nextLine();
             if (choice.equalsIgnoreCase("h")) {
@@ -66,25 +69,26 @@ public class BlackjackGame extends Game {
         }
     }
 
-    private void dealerTurn() {
-        while (dealer.getHandValue() < 17) {
+    public void dealerTurn() {
+        while (dealer.getHandAmount() < 17) {
             dealer.addCard(deck.dealCard());
         }
-        System.out.println("Dealer's hand: " + dealer.getHandValue());
+        System.out.println("Dealer's hand: " + dealer.getHandAmount());
     }
 
     @Override
-    public void declareWinner() {
-        int playerScore = player.getHandValue();
-        int dealerScore = dealer.getHandValue();
+    public String declareWinner() {
+        int playerScore = player.getHandAmount();
+        int dealerScore = dealer.getHandAmount();
+
         if (playerScore > 21) {
-            System.out.println("Player busted. Dealer wins!");
+            return "Player busted. Dealer wins!";
         } else if (dealerScore > 21 || playerScore > dealerScore) {
-            System.out.println("Player wins!");
+            return "Player wins!";
         } else if (playerScore == dealerScore) {
-            System.out.println("It's a tie!");
+            return "It's a tie!";
         } else {
-            System.out.println("Dealer wins!");
+            return "Dealer wins!";
         }
     }
 
@@ -92,4 +96,17 @@ public class BlackjackGame extends Game {
         BlackjackGame blackjack = new BlackjackGame("Blackjack");
         blackjack.play();
     }
+
+    public Object getDeck() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public Object getPlayer() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public Object getDealer() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
 }
